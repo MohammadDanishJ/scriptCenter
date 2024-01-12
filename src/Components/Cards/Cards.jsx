@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import "./Cards.scss";
 import { Modal } from "..";
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FiCopy } from "react-icons/fi";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+// Import the SQL language definition for PrismLight
+import sql from 'react-syntax-highlighter/dist/esm/languages/prism/sql';
+
+// Register the SQL language definition
+SyntaxHighlighter.registerLanguage('sql', sql);
 
 export const UserCard = (props) => {
+  const [copied, setCopied] = useState(false);
   const [isOpen, setIsOpen] = useState(false)
   const {
     user = {
@@ -17,6 +25,13 @@ export const UserCard = (props) => {
     className = "",
     ...rest
   } = props;
+
+  const handleCopy = () => {
+    setCopied(true)
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  }
 
   const formattedScript = user.script.replace(/\\n/g, '\n');
   // const scriptWithLineBreaks = formattedScript.replace(/\\n/g, '<br>');
@@ -43,7 +58,10 @@ export const UserCard = (props) => {
       </div>
     </div>
           <Modal open={isOpen} onClose={()=>setIsOpen(false)} className='p-1'>
-            <span className="modal-header text-center mb-1">{user.name}</span>
+            <span className="modal-header text-center mb-1 c-p">{user.name}
+              <CopyToClipboard text={formattedScript} onCopy={handleCopy}>
+        <span className="lhinit pl-1">{copied ? 'Copied!' : <><FiCopy /> Copy</>}</span>
+      </CopyToClipboard></span>
             {/* <div className="modal-body w-100" style={{overflowY: 'scroll'}} dangerouslySetInnerHTML={{__html: scriptWithLineBreaks}}/> */}
 
             <div className="modal-body w-100">
@@ -58,7 +76,7 @@ export const UserCard = (props) => {
 
 export const CodeSnippet = ({ language, code }) => {
   return (
-    <SyntaxHighlighter language={language} style={docco}>
+    <SyntaxHighlighter language={language} style={prism} className='p-1 pl-2 syntax-highlighter'>
       {code}
     </SyntaxHighlighter>
   );

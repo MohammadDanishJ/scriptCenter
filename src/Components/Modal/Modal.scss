@@ -26,3 +26,12 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .modal-overlay{
+        .modal-content{
+            flex: 0 0 calc(100% - 1rem);
+            max-width: calc(100% - 1rem);
+        }
+    }
+}

@@ -31,6 +31,7 @@ body {
 ::-webkit-scrollbar {
   display: block;
   width: 6px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -313,9 +314,9 @@ textarea {
 }
 
 @media (max-width: 768px) {
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
 
   .col-sm-1 {
     width: 8.33%;
