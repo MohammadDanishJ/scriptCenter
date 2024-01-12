@@ -1,0 +1,52 @@
+// assumed mobile screen size
+$mobile: 768px;
+@media screen and (min-width: $mobile) and (max-width: 900px) {
+    .UserContainer {
+        width: 100%;
+        flex: 0 0 85%;
+        max-width: 85%;
+        margin: 0 auto; /* Add this to center the container */
+    }
+}
+@media screen and (min-width: 900px) and (max-width: 1024px) {
+    .UserContainer {
+        flex: 0 0 70%;
+        max-width: 70%;
+        margin: 0 auto; /* Add this to center the container */
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+    .UserContainer {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin: 0 auto; /* Add this to center the container */
+    }
+}
+@media screen and (min-width: 1300px) {
+    .UserContainer {
+        flex: 0 0 90%;
+        max-width: 90%;
+        margin: 0 auto; /* Add this to center the container */
+    }
+}
+@media screen and (max-width: $mobile) {
+    .breakpoint {
+        position: relative;
+        .child {
+            width: 200vw;
+            position: absolute;
+            .UserContainer,
+            .ChatContainer {
+                width: 100vw;
+            }
+
+            .ChatContainer {
+                height: 100vh !important;
+                transform: translateY(-50px);
+            }
+            &.active {
+                transform: translateX(-100vw);
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.user {
+    background: #fff;
+    margin-left: 6px;
+    border-radius: 8px;
+
+    &.active {
+        background: #f2f4fb;
+    }
+
+    &:hover:not(.active) {
+        background-color: #f2f4fbb6;
+    }
+
+    > div.p-rel {
+        padding: 0.5rem 1rem 0.5rem 0.8rem;
+        overflow: hidden;
+        .user-data {
+            width: calc(100% - 50px);
+            justify-content: space-evenly;
+            .name-data {
+                > .fl {
+                    flex-grow: 1;
+                }
+            }
+
+            .message-data {
+                .message-item {
+                    font-size: 14px;
+                    color: #ccc;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .user {
+        margin-left: 0;
+        border-radius: 0;
+    }
+}
+
+.modal-header{
+    color: #f2f4fb;
+    font-weight: 600;
+}
+.modal-body{
+    // color: #f2f4fb;
+    font-weight: 400;
+}

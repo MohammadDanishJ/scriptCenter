@@ -1,0 +1,28 @@
+.modal-overlay{
+    background: rgba(0,0,0,.85);
+    z-index: 99999;
+    .modal-content{
+        flex: 0 0 75%;
+        max-width: 75%;
+        margin: 0 auto;
+    }
+    .button.close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #FFF;
+        margin: 1rem 1rem 1.5rem;
+        padding: .2rem;
+        font-size: 48px;
+        border-radius: 50%;
+        border: 1px solid rgba(206, 17, 38, 0.3);
+        background-color: rgba(206, 17, 38, 0.1);
+        transition: .1s all ease;
+        cursor: pointer;
+
+        &:hover{
+            scale: 1.1;
+            background-color: rgba(206, 17, 38, 0.3);
+        }
+    }
+}
